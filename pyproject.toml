@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lyubishchev"
+version = "0.1.0"
+description = "Quantitative taxonomy methods of A.A. Lyubishchev (1943) — continuous multivariate classification for biological systematics."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Akzhan Berdeyev", email = "akzhan.berdeyev@gmail.com" }
+]
+keywords = [
+    "taxonomy",
+    "biometrics",
+    "classification",
+    "systematics",
+    "unsupervised learning",
+    "multivariate statistics",
+    "discriminant analysis",
+    "numerical taxonomy",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+]
+plot = [
+    "matplotlib>=3.6",
+]
+
+[project.urls]
+Homepage = "https://baddogdata.com"
+Repository = "https://github.com/akzhanberdi/lyubishchev"
+"Bug Tracker" = "https://github.com/akzhanberdi/lyubishchev/issues"
+"Primary Source" = "http://www.zin.ru/animalia/coleoptera/rus/lyubis05.htm"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lyubishchev*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
