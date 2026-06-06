@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lyubishchev"
-version = "0.1.0"
+version = "0.2.0"
 description = "Quantitative taxonomy methods of A.A. Lyubishchev (1943) — continuous multivariate classification for biological systematics."
 readme = "README.md"
 license = { text = "MIT" }
@@ -22,7 +22,7 @@ keywords = [
     "numerical taxonomy",
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
     "Topic :: Scientific/Engineering :: Mathematics",
@@ -37,6 +37,7 @@ requires-python = ">=3.9"
 dependencies = [
     "numpy>=1.24",
     "scipy>=1.10",
+    "scikit-learn>=1.2",
 ]
 
 [project.optional-dependencies]
@@ -50,8 +51,8 @@ plot = [
 
 [project.urls]
 Homepage = "https://baddogdata.com"
-Repository = "https://github.com/akzhanberdi/lyubishchev"
-"Bug Tracker" = "https://github.com/akzhanberdi/lyubishchev/issues"
+Repository = "https://github.com/AkzhanBerdi/lyubishchev"
+"Bug Tracker" = "https://github.com/AkzhanBerdi/lyubishchev/issues"
 "Primary Source" = "http://www.zin.ru/animalia/coleoptera/rus/lyubis05.htm"
 
 [tool.setuptools.packages.find]
