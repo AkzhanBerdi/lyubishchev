@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lyubishchev"
-version = "0.2.0"
+version = "0.2.1"
 description = "Quantitative taxonomy methods of A.A. Lyubishchev (1943) — continuous multivariate classification for biological systematics."
 readme = "README.md"
 license = { text = "MIT" }
