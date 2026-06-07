@@ -88,6 +88,23 @@ class TestPredictProba:
         single = np.vstack([self.clf.predict_proba(x.reshape(1, -1)) for x in X])
         np.testing.assert_allclose(batch, single, atol=1e-12)
 
+    def test_mahalanobis_matches_explicit_quadratic_form(self):
+        # The Cholesky-whitening predict path must produce exactly the
+        # same log-likelihoods as the textbook diff @ cov^-1 @ diff form.
+        # This guards against a future refactor silently changing the math.
+        ll = self.clf._log_likelihood(X)
+        k = self.clf.n_features_in_
+        const = -0.5 * k * np.log(2.0 * np.pi)
+        expected = np.empty_like(ll)
+        for j, cls in enumerate(self.clf.classes_):
+            cov = self.clf.covariances_[cls]
+            cov_inv = np.linalg.inv(cov)
+            sign, logdet = np.linalg.slogdet(cov)
+            diff = X - self.clf.means_[cls]
+            maha = np.einsum("ij,jk,ik->i", diff, cov_inv, diff)
+            expected[:, j] = const - 0.5 * logdet - 0.5 * maha
+        np.testing.assert_allclose(ll, expected, rtol=1e-9, atol=1e-9)
+
 
 class TestStandardize:
     def test_standardize_scale_invariance(self):
